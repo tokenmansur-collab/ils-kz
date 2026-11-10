@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="kk-KZ"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ILS KZ — Өңірлердің өнеркәсіптік тартымдылық рейтингі</title>
+<link rel="stylesheet" href="styles.css"></head><body>
+<header><div class="nav"><div class="brand"><div class="logo">ILS</div><span>ILS <span style="color:#6adbef">KZ</span></span></div>
+<nav class="navlinks"><button class="active" data-view="rating">Рейтинг</button><button data-view="assistant">Өңір таңдау</button><button data-view="method">Әдістеме</button></nav><div class="navright"><div class="status">Өнеркәсіптік тартымдылық индексі</div></div></div></header>
+<main>
+<section class="hero"><div><div class="eyebrow">Қазақстан өңірлерінің өнеркәсіптік тартымдылық индексі</div><h1>Өзіңе қолайлы өңірді<br><span style="color:var(--blue)">таңда да, өндірісті тиімді орналастыр.</span></h1><p>Қазақстан өңірлерін алты фактор бойынша салыстырыңыз: географиялық орналасу, логистика, энергия, еңбек ресурстары, өнеркәсіптік инфрақұрылым және нарыққа қолжетімділік.</p></div><div class="hero-actions"><button class="btn primary" onclick="document.querySelector('#assistantPanel').scrollIntoView({behavior:'smooth'})">✦ Подобрать регион</button></div></section>
+<section class="stats">
+<div class="stat"><label>Бағаланатын өңір саны</label><strong>20</strong><small>17 облыс және республикалық маңызы бар 3 қала</small></div>
+<div class="stat"><label>Бағалау факторлары</label><strong>06</strong><small>Әр фактор 0–100 аралығында</small></div>
+<div class="stat"><label>Әр фактордың үлесі</label><strong>16,7%</strong><small>Жалпы бағадағы тең үлес</small></div>
+<div class="stat"><label>Есептеу әдісі</label><strong>ILS</strong><small>Нормалау және орташа мән</small></div>
+</section>
+<div class="layout" id="ratingView">
+<section class="panel" id="listPanel"><div class="panelhead"><div><h2>Өңірлер рейтингі</h2><div class="sub">Өңірді таңдап, оның жалпы бағасы мен алты фактор бойынша нәтижесін көріңіз.</div></div><span class="tag">20 өңір</span></div><input class="search" id="search" placeholder="⌕  Облысты немесе қаланы іздеу…" autocomplete="off"><div class="list" id="regionList"></div></section>
+<div class="rightcol">
+<section class="panel" id="detailPanel"><div class="detailtop"><div><span class="tag" id="placeRank">#1 · рейтинг</span><h2 id="regionTitle">Өңірді таңдаңыз</h2><div class="sub" id="regionDesc">ILS KZ үлгісі бойынша өңірдің толық бағасы.</div></div><div class="bigscore"><strong id="overall">—</strong><span>100 балдан</span></div></div>
+<div class="scorebar"><span id="overallBar" style="width:0%"></span></div><div class="scorecaption"><span>Салыстырмалы көрсеткіші төмен</span><span>Жоғары</span></div>
+<div class="factorlist" id="factorList"></div>
+<div class="twocol" style="margin-top:22px"><div class="miniPanel"><h3>✦ Артықшылықтары</h3><div id="pros"></div></div><div class="miniPanel"><h3>△ Қосымша тексеруді қажет етеді</h3><div id="cons"></div></div></div></section>
+</div></div>
+<section class="panel assistant" id="assistantPanel" style="margin-top:18px"><div class="aihead"><div class="aiicon">✳</div><div><h2>Өңір таңдаушы · ILS кеңесшісі</h2><div class="sub">Қандай өндіріс ашқың келетінін және не маңызды екенін таңда. Жүйе рейтингке сүйеніп, неліктен ұсынғанын түсіндіреді.</div></div></div>
+<div class="fields"><div><label>Қандай өндіріс?</label><select id="business"><option value="general">Жалпы өндіріс</option><option value="energy">Энергияны көп қажет ететін өндіріс</option><option value="labor">Жұмыс күші көп қажет ететін өндіріс</option><option value="logistics">Тасымалы көп тауар өндірісі</option><option value="infrastructure">Дайын өнеркәсіптік инфрақұрылым қажет</option><option value="market">Ірі нарыққа жақын болу маңызды</option></select></div>
+<div><label>Ең маңызды басымдық</label><select id="priority"><option value="balanced">Барлық фактор тең маңызды</option><option value="geo">Географиялық орналасулық орналасу</option><option value="log">Көлік және логистика</option><option value="energy">Энергия әлеуеті</option><option value="labor">Еңбек ресурстары</option><option value="infra">Өнеркәсіптік инфрақұрылым</option><option value="market">Нарыққа қолжетімділікқа қолжетімділік</option></select></div>
+<div><label>Бюджет деңгейі (міндетті емес)</label><select id="budget"><option value="any">Әзірге белгісіз</option><option value="low">Шығынды барынша азайту</option><option value="medium">Орташа бюджет</option><option value="high">Ірі инвестициялық жоба</option></select></div>
+<div><label>Қосымша талап</label><input id="extra" placeholder="Мысалы: Алматыға жақын, экспорт..." /></div></div>
+<div class="aiAction"><button class="btn primary" id="recommendBtn">✦ Маған өңір таңда</button><button class="btn" id="resetBtn" style="background:#ffffff14;color:white;border-color:#ffffff40">Тазалау</button></div><div class="answer" id="answer"></div>
+<div class="note" style="color:#c4e6ff">Бұл кеңесші Excel кестесіндегі ILS ұпайларын пайдаланып, ережелерге негізделген ұсыныс жасайды. Ол сыртқы жасанды интеллект қызметіне қосылмаған. Ұсыныстар қолда бар деректермен шектеледі және кәсіби сараптаманы алмастырмайды.</div></section>
+<section class="panel" id="methodPanel" style="margin-top:18px"><div class="panelhead"><div><h2>Әдістеме және дереккөздер</h2><div class="sub">Бағалау логикасы ашық көрсетіледі — әр ұпайдың негізін тексеруге болады.</div></div><span class="tag">Ашық әдістеме</span></div>
+<div class="twocol"><div class="miniPanel"><h3>Жалпы ILS ұпайы</h3><p style="font-size:13px;line-height:1.7;color:#4d6682;margin:0">Алты фактордың нормаланған ұпайларының арифметикалық орташа мәні алынады. Әр фактордың салмағы — 1/6. Нәтиже 0–100 шкаласында көрсетіледі.</p><div style="margin-top:12px;padding:12px;border-radius:12px;background:#eaf7ff;color:#004aad;font-weight:800;text-align:center">ILS = (F1 + F2 + F3 + F4 + F5 + F6) / 6</div></div><div class="miniPanel"><h3>Дерек сапасы туралы</h3><p style="font-size:13px;line-height:1.7;color:#4d6682;margin:0">F1 географиялық қашықтық, F3 энергетика және F4 еңбек ресурстары көрсеткіштері жуық мәндермен берілген. F2 — жүк айналымы индексі, нақты көлем емес. F5 өнеркәсіп өндірісі, F6 жалпы өңірлік өніммен бағаланған; F6 нарық сұранысының тікелей өлшемі емес.</p></div></div>
+<h3 style="font-size:14px;margin:18px 0 10px">Ресми статистика көздері</h3><div class="sources">
+<a target="_blank" rel="noopener" href="https://stat.gov.kz/ru/industries/business-statistics/stat-industrial-production/publications/347187/">Өнеркәсіп өндірісі · stat.gov.kz</a>
+<a target="_blank" rel="noopener" href="https://stat.gov.kz/en/industries/economy/national-accounts/publications/433551/">Жалпы өңірлік өнім · stat.gov.kz</a>
+<a target="_blank" rel="noopener" href="https://stat.gov.kz/ru/industries/business-statistics/stat-transport/publications/280667/">Көлік статистикасы · stat.gov.kz</a>
+<a target="_blank" rel="noopener" href="https://stat.gov.kz/ru/industries/business-statistics/stat-invest/publications/280553/">Негізгі капиталға инвестициялар · stat.gov.kz</a>
+<a target="_blank" rel="noopener" href="https://stat.gov.kz/ru/industries/labor-and-income/stat-empt-unempl/spreadsheets/">Еңбек статистикасы · stat.gov.kz</a>
+</div><p class="note">Excel бастапқы файлының ескертуі: ресми және жуық деректер аралас қолданылған. Жуық көрсеткіштер ресми статистика ретінде көрсетілмеуі керек. Деректерді жаңарту немесе қайта есептеу қажет болса, бастапқы кестені тексеріңіз.</p></section>
+<div class="foot"><span>ILS KZ · Қазақстан өңірлерінің өнеркәсіптік тартымдылық индексі</span><span>Деректер: жобаға берілген Excel кестесі · Ресми көздер: Қазақстан Республикасы Ұлттық статистика бюросы</span></div>
+</main>
+<script src="script.js"></script></body></html>
